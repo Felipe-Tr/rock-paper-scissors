@@ -1,6 +1,8 @@
 
 /////variables globles/////
 var rondade5=1;
+let sumFvic=0;
+let sumFls=0;
 ///////////////////////////
 
 ////////////botones y sus eventos//////////
@@ -78,8 +80,7 @@ function playRound(playerSelection, computerSelecion1){
 function game(playerSelection)
 {
     //window.alert("juguemos una ronda de 5")
-    let sumFvic=0;
-    let sumFls=0;
+
     // for (let index = 1; index <=5; index++) {        
     if (rondade5<=5){   
         var partida =playRound(playerSelection)
@@ -93,7 +94,7 @@ function game(playerSelection)
         rsglobal.innerText= "¡Has perdido! suerte para la proxima"
         } */
         rondade5=rondade5+1;
-        rsh3.innerText=partida;
+        rsh3.innerText=partida+" "+"maquina: "+sumFls+" tu: "+sumFvic;
         divrs.appendChild(rsh3)
         
         }
@@ -108,11 +109,15 @@ function game(playerSelection)
            rsglobal.appendChild(btnrs)
            btnrs.addEventListener("click",()=>location.reload())
         }
-        else {
+        else if(sumFls < sumFvic) {
            rsglobal.innerText="Un juego reñido pero ¡Has ganado!"
            rsglobal.appendChild(btnrs)
            btnrs.addEventListener("click",()=>location.reload())
         }
-    
+        else {
+            rsglobal.innerText="Un juego demasiado reñido pero ¡Has empatado!"
+            rsglobal.appendChild(btnrs)
+            btnrs.addEventListener("click",()=>location.reload())
+        }
     }
 }
